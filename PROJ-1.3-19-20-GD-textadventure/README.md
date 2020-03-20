@@ -1,5 +1,5 @@
 ## MaQuest
-gamedeveloper :[Zakaria]
+gamedeveloper : Zakar
 
 ### Korte omschrijving van de game
 Je moet rond de school gaan en items oppakken. Je moet alle items oppakken zodat je wint!
