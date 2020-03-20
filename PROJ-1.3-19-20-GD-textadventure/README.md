@@ -2,7 +2,7 @@
 gamedeveloper :[Zakaria]
 
 ### Korte omschrijving van de game
-JE moet rond de school gaan en items oppakken. Je moet alle items oppakken zodat je wint!
+Je moet rond de school gaan en items oppakken. Je moet alle items oppakken zodat je wint!
 ---
 #### Producten Werkproces
 | Product  | Link |
