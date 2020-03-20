@@ -1,0 +1,26 @@
+body{
+  background-color: black;
+}
+
+.container{
+  position: relative;
+  width: 600px;
+  margin: auto;
+  background-color: azure;
+  padding: 20px;
+  border: black 3px solid;
+  border-radius: 10px;
+}
+
+#feedback{
+  background-color: azure;
+  color: black;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.treasure{
+  position: absolute;
+  left:   50px;
+  right:  150px;
+}
