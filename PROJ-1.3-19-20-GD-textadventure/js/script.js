@@ -66,8 +66,11 @@ treasureImages[1] = "treasure1.png";
 treasureImages[2] = "treasure2.png";
 treasureImages[3] = "treasure3.png";
 
+inventoryTreasures = [];
+
 
 myInput.addEventListener('keydown', getInput, false);
+
 
 function getInput(evt) {
   if (evt.key == "Enter") {
@@ -98,12 +101,17 @@ function getInput(evt) {
       myInput.value = "";
     }
 
-    if (inputArray[0] == "Pak") {
+    if (inputArray[0] == "Pak" || "pak") {
       console.log('Ga wat pakken');
       myInput.value = "";
+      if(treasureAanwezig)
+      {
+        pakTreasure(currentLocation);
+        giveLocation();
+      }
     }
 
-    if (inputArray[0] == "Gebruik"){
+    if (inputArray[0] == "Gebruik" || "gebruik"){
       console.log('Ga wat gebruiken');
       myInput.value = "";
     }
@@ -125,15 +133,43 @@ function giveLocation() {
   for (let i = 0; i < directions[currentLocation].length; i++) {
     myDirections += "<li>" + directions[currentLocation][i] + "</li>";
   }
+  myDirections += checkTreasure(currentLocation);
   myPossibilities.innerHTML = myDirections;
-  myInventory.innerHTML = "uw inventory is leeg";
-  showTreasure(currentLocation);
+if(inventoryTreasures.length > 0)
+  {
+    myInventory.innerHTML = "<h4> Dit zijn jouw schatten! </h3>";
+    inventoryTreasures.forEach(showInventory);
+      function showInventory(item, index)
+        {
+          myInventory.innerHTML += "<li>" + item + "</li>"; 
+        }
+  }
+  else
+  {
+    myInventory.innerHTML = "Je inventory is leeg";
+  }
 }
 
 function removeFeedback() {
   feedback.innerHTML = "";
 }
-
+function checkTreasure(currentLocation)
+{
+  if(typeof treasures [currentLocation] != "undefined" && treasures[currentLocation] != "")
+  {
+    console.log(treasures[currentLocation]);
+    treasure.src = "Treasures/" + treasureImages[currentLocation];
+    let treasureText = "<br><h4> In deze ruimte is een voorwerp aanwezig:" + treasures[currentLocation] + "</h4><br>";
+    treasureAanwezig = true;
+    return treasureText;
+  }
+  else
+  {
+    treasure.src = "";
+    treasureAanwezig = false;
+    return "";
+  }
+}
 giveLocation();
 
 function showTreasure(currentLocation)
@@ -143,4 +179,11 @@ function showTreasure(currentLocation)
     console.log(treasures[currentLocation]);
     treasures.src = "Treasures/" + treasureImages[currentLocation];
   }
+}
+
+function pakTreasure(currentLocation)
+{
+  inventoryTreasures.push(treasures[currentLocation]);
+  treasures[currentLocation] = "";
+  giveLocation();
 }
